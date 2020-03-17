@@ -7,11 +7,13 @@
                 "ImageId": "ami-08111162",
                 "InstanceType": "t1.micro",
                 "SecurityGroups": [
-                   
-                   { "Ref": "WebSecuirtyGroup" }
-                   
+                    {
+                        "Ref": "WebSecuirtyGroup"
+                    }
                 ],
-                "KeyName": "virginia",
+                "KeyName": {
+                    "Ref": "KeyName"
+                },
                 "Tags": [
                     {
                         "Key": "Name",
@@ -45,6 +47,14 @@
                     }
                 ]
             }
+        }
+    },
+    
+    "Parameters":{
+        "KeyName": {
+            "Description": "SSH KeyName To Login To the System",
+            "Type": "String",
+            "Default": "east-us-01"
         }
     }
 }
